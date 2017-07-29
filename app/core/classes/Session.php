@@ -41,7 +41,6 @@ class Session
      */
     public function set($key, $value)
     {
-        echo $key . ' => ' . $value;
         $_SESSION[$key] = $value;
     }
 
