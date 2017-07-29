@@ -3,16 +3,35 @@
 namespace classes;
 use app\core\Application;
 
+/**
+ * Class Route
+ * @package classes
+ */
 class Route
 {
+    /**
+     * @var Application
+     */
     private $app;
+    /**
+     * @var array
+     */
     private $routes = [];
 
+    /**
+     * Route constructor.
+     * @param Application $app
+     */
     public function __construct(Application $app)
     {
         $this->app = $app;
     }
 
+    /**
+     * @param $url
+     * @param $action
+     * @param string $requestMethod
+     */
     public function addRoute($url, $action, $requestMethod = 'GET')
     {
         $route = [
@@ -25,6 +44,10 @@ class Route
         $this->routes[] = $route;
     }
 
+    /**
+     * @param $url
+     * @return string
+     */
     private function generatePattern($url)
     {
         $pattern = "#^";
@@ -34,6 +57,10 @@ class Route
         return $pattern;
     }
 
+    /**
+     * @param $action
+     * @return mixed|string
+     */
     private function getAction($action)
     {
         $action = str_replace('/', '\\', $action);
@@ -41,6 +68,9 @@ class Route
         return strpos($action, '@') !== false ? $action : $action . '@index';
     }
 
+    /**
+     * @return array
+     */
     public function getProperRoute()
     {
         foreach ($this->routes as $route) {
@@ -53,11 +83,19 @@ class Route
         die('<h3> the url <span style="color: red"> ' . $this->app->request->getUrl() . '</span> is not defined!</h3>');
     }
 
+    /**
+     * @param $pattern
+     * @return int
+     */
     private function isMatching($pattern)
     {
         return preg_match($pattern, $this->app->request->getUrl());
     }
 
+    /**
+     * @param $url
+     * @return array
+     */
     public function getArgumentsFrom($url)
     {
         $args = [];
