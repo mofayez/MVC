@@ -4,5 +4,5 @@ simple mvc architecture to use in simple applications using php.
 # design patterns that are used
 MVC, Singleton, Registery, Factory
 
-# dependance
+# dependancies
 "illuminate/databas" / Eloquent - ORM    
