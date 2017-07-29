@@ -1,0 +1,13 @@
+{
+  "require": {
+    "illuminate/database": "^5.4"
+  },
+  "autoload": {
+    "classmap": [
+      "app/models"
+    ],
+    "psr-4": {
+      "app\\": "app/"
+    }
+  }
+}
