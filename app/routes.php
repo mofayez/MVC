@@ -1,3 +1,3 @@
 <?php
 
-$app->route->addRoute('', 'HomeController');
+$app->route->addRoute('', 'HomeController@index');
